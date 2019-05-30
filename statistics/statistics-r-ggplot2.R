@@ -99,6 +99,28 @@ p + theme()
 
 
 
+
+## FACETING
+## ---------------------------------------------------------------------------
+## Split from level of categorical subjects
+
+ggplot(diamonds, aes(x = carat, y = price)) + 
+  geom_point(aes(color = clarity)) +     ## gives each plot window a different color
+  ## categorical (tilda ~ variable 01)
+  facet_wrap(~ clarity)  ## shows muktple plots based on category
+
+## 2 Variables on x and y axis
+ggplot(diamonds, aes(x = carat, y = price)) + 
+  geom_point() +
+  facet_grid(cut ~ clarity) +
+  theme_minimal()
+
+
+
+
+
+
+
 ## ---------------------------------------------------------------------------
 
 
@@ -114,3 +136,7 @@ p + theme()
 
 ## Theme resources:
 ## R Graph Gallery, ggpubr (publication match themer)
+
+##  geom_smooth(method = 'lm', color = 'red') = strings
+##  arguments regarding columns don't express in strings, but if it's other features, then it'll need ''
+##  dplyr functions similar as well
