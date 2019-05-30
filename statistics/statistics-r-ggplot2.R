@@ -51,7 +51,66 @@ ggplot(diamonds, aes(x = carat, y = price, color = clarity)) +
   geom_point(aes(color = clarity))
 
 
-## Histogram = no y
+## HISTOGRAM
+## ---------------------------------------------------------------------------
+## no y
 ## split into 30 equal size bins
 ggplot(diamonds, aes(x = carat)) + 
   geom_histogram(binwidth = 0.01)  ## split size
+
+
+## BOXPLOT
+## ---------------------------------------------------------------------------
+ggplot(diamonds, aes(x = clarity, y = carat)) +
+  geom_boxplot()
+
+## fit in linear or quadradtic fits into a single functions
+## back to origin plot
+ggplot(diamonds, aes(x = carat, y = price, color = clarity)) +  ## global setting
+  geom_point(alpha = 0.5) +
+  ## linear regression 
+  geom_smooth(method = 'lm')  ## will guess wrong in its fit, specify method == lm = linear model
+
+
+## LINE FITS
+## ---------------------------------------------------------------------------
+## return one single linear fit
+ggplot(diamonds, aes(x = carat, y = price)) +  ## global setting
+  geom_point(aes(color = clarity)) +
+  ## linear regression 
+  geom_smooth(method = 'lm', color = 'red') 
+
+
+## PRETTIFY THEMES
+## ---------------------------------------------------------------------------
+p <- ggplot(diamonds, aes(x = carat, y = price)) +  ## global setting
+  geom_point(aes(color = clarity)) +
+  ## linear regression 
+  geom_smooth(method = 'lm', color = 'red') 
+
+
+p + theme_bw()         # cuts something out
+p + theme_classic()    # minimal
+
+
+## customize your own theme
+## ggplot lesson's bottom page Resource Section
+p + theme()
+
+
+
+## ---------------------------------------------------------------------------
+
+
+## NOTES
+
+## order of geom_point's matter, like z-index layers in css
+## factor variable gives order level
+## scale family function that selects the order of axis transformation
+
+## HELPER
+?geom_smooth
+
+
+## Theme resources:
+## R Graph Gallery, ggpubr (publication match themer)
