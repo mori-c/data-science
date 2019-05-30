@@ -44,5 +44,14 @@ p +
 ggplot(diamonds, aes(x = carat, y = price, color = cut)) + 
   geom_point()
 
+## IF & I1 diamonds = outiners of cluster lines (not really similar to PCA = principal component analysis)
+## be geom-point specific
 ggplot(diamonds, aes(x = carat, y = price, color = clarity)) + 
-  geom_point()
+  ## localize aesthetics
+  geom_point(aes(color = clarity))
+
+
+## Histogram = no y
+## split into 30 equal size bins
+ggplot(diamonds, aes(x = carat)) + 
+  geom_histogram(binwidth = 0.01)  ## split size
